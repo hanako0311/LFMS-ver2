@@ -35,7 +35,7 @@ Please request the necessary `.env` file from the project administrator before s
 
 ### Installation
 Clone the repository using:
-[git clone https://github.com/yourrepository/lfms.git](https://github.com/hanako0311/LFMS-ver2.git)
+https://github.com/hanako0311/LFMS-ver2.git
 
 ### Initializing Frontend
 ## Navigate to the client directory and install dependencies:

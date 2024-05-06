@@ -40,7 +40,7 @@ export default function FooterCom() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Capstone Project
+                  Project
                 </Footer.Link>
                 <Footer.Link
                   href="https://youtu.be/76KsgvKrqnI"

@@ -68,15 +68,6 @@ export default function DashSidebar() {
     <Sidebar className="w-full md:w-56">
       <Sidebar.Items>
         <Sidebar.ItemGroup className="flex flex-col gap-1">
-          <Link to="/dashboard?tab=analytics">
-            <Sidebar.Item
-              active={tab === "analytics"}
-              icon={HiViewGrid} // An icon that represents analytics
-              as="div"
-            >
-              Dashboard
-            </Sidebar.Item>
-          </Link>
           <Link to="/dashboard?tab=found-items">
             <Sidebar.Item
               active={tab === "found-items"}
@@ -106,12 +97,6 @@ export default function DashSidebar() {
               Profile
             </Sidebar.Item>
           </Link>
-          <Link to="/dashboard?tab=history">
-            <Sidebar.Item active={tab === "history"} icon={FaHistory} as="div">
-              History
-            </Sidebar.Item>
-          </Link>
-
           {/* CRUD Dropdown */}
           <div className="flex flex-col gap-2">
             <Sidebar.Item
@@ -144,6 +129,20 @@ export default function DashSidebar() {
               </div>
             )}
           </div>
+          <Link to="/dashboard?tab=analytics">
+            <Sidebar.Item
+              active={tab === "analytics"}
+              icon={HiViewGrid} // An icon that represents analytics
+              as="div"
+            >
+              Dashboard
+            </Sidebar.Item>
+          </Link>
+          <Link to="/dashboard?tab=history">
+            <Sidebar.Item active={tab === "history"} icon={FaHistory} as="div">
+              History
+            </Sidebar.Item>
+          </Link>
           <Sidebar.Item
             icon={HiArrowSmRight}
             className="cursor-pointer"

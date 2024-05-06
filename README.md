@@ -1,23 +1,22 @@
 # LFMS: Advanced Lost and Found Management System
 
 ## Overview
-LFMS is an innovative digital solution designed to streamline and enhance the lost and found process at CIT-University. This system automates manual procedures, making it easier for students, faculty, and staff to report and claim lost items efficiently. With a focus on user-friendliness and security, FindNest offers a comprehensive platform that integrates the reporting, tracking, and management of lost and found items.
+LFMS (Lost and Found Management System) is an advanced digital platform developed to optimize the lost and found procedures at CIT-University. This system replaces manual processes with automated solutions, facilitating a seamless interface for students, faculty, and staff to report and reclaim lost items efficiently. The system prioritizes user-friendliness and robust security measures.
 
 ## Features
-- **Report Found Items**: Users can report found items through an intuitive form, detailing item name, description, location found, and date found.
-- **Staff Dashboard**: A dashboard for staff members to manage reported items, with capabilities to sort and filter through the lost items.
-- **Search Functionality**: Enables staff members to search for specific items based on item name, location found, and date found.
-- **Claim Verification**: Allows staff to verify claims through a manual process, ensuring the rightful owner retrieves their item.
-- **History Tracking**: Maintains a record of reported, claimed, and unclaimed items for administrative purposes.
-- **Admin Account Management**: Admins can manage staff accounts, creating and editing access as needed.
-- **Privacy and Security**: Implements role-based access control and adheres to strict privacy requirements to protect user information.
+- **Report Found Items**: Enables users to report found items using a detailed form that includes item name, description, location, and date found.
+- **Staff Dashboard**: Provides a comprehensive dashboard for staff to manage reports, with features to sort and filter items.
+- **Search Functionality**: Allows staff to search for items using multiple criteria like name, location, and date.
+- **Claim Verification**: Ensures items are returned to their rightful owners through a rigorous verification process.
+- **History Tracking**: Keeps a detailed record of all reported, claimed, and unclaimed items for administrative review.
+- **Admin Account Management**: Allows admins to create and modify staff user accounts and permissions.
+- **Privacy and Security**: Features role-based access control and adheres to strict data privacy standards to secure personal information.
 
 ## Technical Stack
-
-- **Frontend**: React, set up with Vite - for a faster development and build process, building a dynamic and interactive user interface.
-- **Backend**: Node.js with Express.js - for handling server-side logic, API endpoints, and integration with the MongoDB database.
-- **Database**: MongoDB - for storing and managing application data efficiently.
-- **Authentication**: Implements secure login mechanisms for staff and admin roles.
+- **Frontend**: React (set up with Vite) to enable rapid development and an interactive user interface.
+- **Backend**: Node.js with Express.js for managing server-side logic, API endpoints, and database interactions.
+- **Database**: MongoDB for efficient data storage and management.
+- **Authentication**: Secure authentication processes for different user roles.
 
 ![React](https://img.shields.io/badge/-React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/-Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
@@ -31,25 +30,30 @@ LFMS is an innovative digital solution designed to streamline and enhance the lo
 - Node.js
 - MongoDB
 
-### Please Ask for the .env file
+### Environment Setup
+Please request the necessary `.env` file from the project administrator before starting the setup.
 
 ### Installation
-git clone https://github.com/yourrepository/lfms.git
+Clone the repository using:
+[git clone https://github.com/yourrepository/lfms.git](https://github.com/hanako0311/LFMS-ver2.git)
 
 ### Initializing Frontend
-cd client
-npm install
+## Navigate to the client directory and install dependencies:
+- cd client
+- npm install
 
-### Initializing Frontend
-should be in root
-npm install
+### Initializing Backend
+## Ensure you are in the project root directory and install dependencies:
+- npm install
 
-### After initialization, run the Application
+### Running the Application
+## Start the backend server:
+# Navigate to the root folder and run:
+- npm run dev
 
-# Start the backend server
-should be in root folder
-npm run dev
+### Start the React frontend:
+## From the client directory:
+- cd client
+- npm run dev
 
-# Start the React frontend with Vite
-cd client
-npm run dev
+

@@ -38,21 +38,21 @@ Clone the repository using:
 https://github.com/hanako0311/LFMS-ver2.git
 
 ### Initializing Frontend
-## Navigate to the client directory and install dependencies:
+# Navigate to the client directory and install dependencies:
 - cd client
 - npm install
 
 ### Initializing Backend
-## Ensure you are in the project root directory and install dependencies:
+# Ensure you are in the project root directory and install dependencies:
 - npm install
 
 ### Running the Application
-## Start the backend server:
+# Start the backend server:
 # Navigate to the root folder and run:
 - npm run dev
 
 ### Start the React frontend:
-## From the client directory:
+# From the client directory:
 - cd client
 - npm run dev
 

@@ -27,7 +27,7 @@ export default function FooterCom() {
                 alt="FindNest Logo"
               />
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                FindNest
+                LFMS
               </span>
             </Link>
           </div>

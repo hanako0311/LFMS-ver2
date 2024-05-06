@@ -39,13 +39,13 @@ export default function DashFoundItem() {
                       alt={item.item}
                       className="h-full w-full object-contain object-center"
                       onError={(e) => {
-                        e.target.onError = null; // Prevents looping
-                        e.target.src = "default-image.png"; // Specify your default image URL here
+                        e.target.onError = null;
+                        e.target.src = "default-image.png";
                       }}
                     />
                   ) : (
                     <img
-                      src="default-image.png" // Specify your default image URL here
+                      src="default-image.png"
                       alt="Default"
                       className="h-full w-full object-cover object-center"
                     />
@@ -59,8 +59,12 @@ export default function DashFoundItem() {
                       {new Date(item.dateFound).toLocaleDateString()}
                     </p>
                   </div>
-                  <span className="bg-red-800 text-white text-xs px-2 py-1 rounded-full uppercase font-semibold">
-                    {item.category}
+                  <span
+                    className={`text-xs px-2 py-1 rounded-full uppercase font-semibold ${
+                      item.itemType === "Found" ? "bg-green-500" : "bg-red-500"
+                    } text-white`}
+                  >
+                    {item.itemType}
                   </span>
                 </div>
                 <Link to={`/item/${item._id}`} className="block mt-2">

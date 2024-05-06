@@ -232,21 +232,6 @@ export default function DashProfile() {
               />
             </div>
             <div className="w-1/2 px-2">
-              <label htmlFor="middlename" className="font-medium">
-                Middle Name (optional)
-              </label>
-              <TextInput
-                id="middlename"
-                type="text"
-                placeholder="Middle Name"
-                value={formData.middlename}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-wrap -mx-2">
-            <div className="w-1/2 px-2">
               <label htmlFor="lastname" className="font-medium">
                 Last Name
               </label>
@@ -258,19 +243,20 @@ export default function DashProfile() {
                 onChange={handleChange}
               />
             </div>
-            <div className="w-1/2 px-2">
-              <label htmlFor="username" className="font-medium">
-                Username
-              </label>
-              <TextInput
-                id="username"
-                type="text"
-                placeholder="Username"
-                value={formData.username}
-                onChange={handleChange}
-              />
-            </div>
           </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="username" className="font-medium">
+            Username
+          </label>
+          <TextInput
+            id="username"
+            type="text"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="flex flex-col gap-2">
@@ -282,18 +268,6 @@ export default function DashProfile() {
             type="text"
             placeholder="Email"
             value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="department" className="font-medium">
-            Department
-          </label>
-          <TextInput
-            id="department"
-            type="text"
-            placeholder="Department"
-            value={formData.department}
             onChange={handleChange}
           />
         </div>

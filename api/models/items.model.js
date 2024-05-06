@@ -10,6 +10,12 @@ const itemSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    itemType: {
+      type: String,
+      required: true,
+      enum: ["Found", "Lost"],
+    },
+
     dateFound: {
       type: Date,
       required: true,
@@ -62,6 +68,19 @@ const itemSchema = new mongoose.Schema(
         "Decorative Items",
         "Other",
       ],
+    },
+    status: {
+      type: String,
+      enum: ["Open", "Claimed", "Closed"],
+      default: "Open",
+    },
+    claimantName: {
+      type: String,
+      default: "",
+    },
+    visibility: {
+      type: Boolean,
+      default: true, // True means visible, false means archived
     },
   },
   { timestamps: true }

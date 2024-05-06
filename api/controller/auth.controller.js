@@ -4,42 +4,11 @@ import jwt from "jsonwebtoken";
 import { errorHandler } from "../utils/error.js";
 
 export const createuser = async (req, res) => {
-  const {
-    firstname,
-    middlename,
-    lastname,
-    username,
-    email,
-    password,
-    department,
-  } = req.body;
-
-  // Check if department is one of the allowed values
-  const allowedDepartments = ["SSG", "SSO", "SSD"];
-  if (!allowedDepartments.includes(department)) {
-    return res.status(400).json({
-      message: "Invalid department. Department must be one of: SSG, SSO, SSD",
-    });
-  }
+  const { firstname, lastname, username, email, password } = req.body;
 
   // Check if any required fields are missing
-  if (
-    !firstname ||
-    !lastname ||
-    !username ||
-    !email ||
-    !password ||
-    !department ||
-    firstname === "" ||
-    lastname === "" ||
-    username === "" ||
-    email === "" ||
-    password === "" ||
-    department === ""
-  ) {
-    return res
-      .status(400)
-      .json({ message: "All fields are required except middlename" });
+  if (!firstname || !lastname || !username || !email || !password) {
+    return res.status(400).json({ message: "All fields are required." });
   }
 
   // Normalize username and email to lowercase
@@ -57,23 +26,24 @@ export const createuser = async (req, res) => {
       .json({ message: "Username or email is already in use" });
   }
 
-  //hashed password
+  // Hash the password
   const hashedPassword = bcrypt.hashSync(password, 10);
 
   // Create new user
   const newUser = new User({
     firstname,
-    middlename,
     lastname,
     username: normalizedUsername,
     email: normalizedEmail,
     password: hashedPassword,
-    department,
+    profilePicture:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/1200px-Windows_10_Default_Profile_Picture.svg.png",
+    role: "staff", // Default role, can be modified based on your application requirements
   });
 
   try {
     await newUser.save();
-    res.json({ message: "User created successfully" });
+    res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

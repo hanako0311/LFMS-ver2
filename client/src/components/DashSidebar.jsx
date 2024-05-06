@@ -9,7 +9,9 @@ import {
   HiChevronDown,
   HiViewBoards,
   HiOutlineDocumentSearch,
+  HiArchive,
 } from "react-icons/hi";
+import { FaHistory } from "react-icons/fa";
 import { Disclosure } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
@@ -81,7 +83,16 @@ export default function DashSidebar() {
               icon={HiOutlineDocumentSearch}
               as="div"
             >
-              Found Items
+              Items
+            </Sidebar.Item>
+          </Link>
+          <Link to="/report-form">
+            <Sidebar.Item
+              active={tab === "report-form"}
+              icon={HiClipboardList}
+              as="div"
+            >
+              Report Form
             </Sidebar.Item>
           </Link>
           <Link to="/dashboard?tab=profile">
@@ -95,13 +106,9 @@ export default function DashSidebar() {
               Profile
             </Sidebar.Item>
           </Link>
-          <Link to="/report-form">
-            <Sidebar.Item
-              active={tab === "report-form"}
-              icon={HiClipboardList}
-              as="div"
-            >
-              Report Form
+          <Link to="/dashboard?tab=history">
+            <Sidebar.Item active={tab === "history"} icon={FaHistory} as="div">
+              History
             </Sidebar.Item>
           </Link>
 
@@ -125,20 +132,13 @@ export default function DashSidebar() {
             {tab.startsWith("crud") && (
               <div className="pl-4 ">
                 <Link to="/dashboard?tab=crud-items">
-                  <Sidebar.Item active={tab === "crud-items"}>
+                  <Sidebar.Item active={tab === "crud-items"} icon={HiArchive}>
                     Items
                   </Sidebar.Item>
                 </Link>
                 <Link to="/dashboard?tab=crud-users">
-                  // Then use this in your Sidebar.Item for Profile
-                  <Sidebar.Item
-                    active={tab === "profile"}
-                    icon={HiUser}
-                    label={getRoleLabel(currentUser.role)} // Make sure currentUser and role exist
-                    labelColor="dark"
-                    as="div"
-                  >
-                    Profile
+                  <Sidebar.Item active={tab === "users"} icon={HiUser} as="div">
+                    Users
                   </Sidebar.Item>
                 </Link>
               </div>

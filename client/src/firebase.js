@@ -8,12 +8,12 @@ import { getAnalytics } from "firebase/analytics";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "findnest-ff43f.firebaseapp.com",
-  projectId: "findnest-ff43f",
-  storageBucket: "findnest-ff43f.appspot.com",
-  messagingSenderId: "139751293554",
-  appId: "1:139751293554:web:68766b70e1fd16a68278eb",
-  measurementId: "G-HQE4T1WYXD"
+  authDomain: "lfms-24960.firebaseapp.com",
+  projectId: "lfms-24960",
+  storageBucket: "lfms-24960.appspot.com",
+  messagingSenderId: "459385620900",
+  appId: "1:459385620900:web:8d13997f4cefb44d111931",
+  measurementId: "G-88B0K0Q93J",
 };
 
 // Initialize Firebase

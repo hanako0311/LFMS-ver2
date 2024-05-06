@@ -21,6 +21,7 @@ export default function CreateLostFoundPost() {
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     item: "",
+    itemType: "",
     dateFound: new Date(),
     location: "",
     description: "",
@@ -191,19 +192,27 @@ export default function CreateLostFoundPost() {
 
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
-      <h1 className="text-center text-3xl my-7 font-semibold">
-        Report Found Item
-      </h1>
+      <h1 className="text-center text-3xl my-7 font-semibold">Report Item</h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <TextInput
             type="text"
-            placeholder="Item Found"
+            placeholder="Item Name"
             required
             name="item"
             className="flex-auto sm:flex-1"
             onChange={handleChange}
           />
+          <Select
+            name="itemType"
+            required
+            className="w-full sm:w-1/4"
+            onChange={handleChange} // ensure this function updates state correctly
+          >
+            <option value="">Select Item Type</option>
+            <option value="Found">Found</option>
+            <option value="Lost">Lost</option>
+          </Select>
           <Select
             name="category"
             required
@@ -225,7 +234,7 @@ export default function CreateLostFoundPost() {
         />
         <TextInput
           type="text"
-          placeholder="Location Found"
+          placeholder="Location"
           required
           name="location"
           onChange={handleChange}
@@ -291,7 +300,7 @@ export default function CreateLostFoundPost() {
           </div>
         )}
         <Button type="submit" gradientDuoTone="pinkToOrange">
-          Submit Found Item
+          Submit Item
         </Button>
         {reportSuccess && (
           <Alert color="success">{reportSuccess}</Alert> // Display the success alert

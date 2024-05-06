@@ -6,13 +6,19 @@ export const createItem = async (req, res, next) => {
   console.log("Received headers:", req.headers);
   console.log("Received request body:", req.body);
 
-  // Destructure required fields from req.body
-  const { item, dateFound, location, description, imageUrls, category } =
-    req.body;
+  const {
+    item,
+    itemType,
+    dateFound,
+    location,
+    description,
+    imageUrls,
+    category,
+  } = req.body;
 
-  // Validate required fields are present and imageUrls is not empty
   if (
     !item ||
+    !itemType ||
     !dateFound ||
     !location ||
     !description ||
@@ -29,25 +35,23 @@ export const createItem = async (req, res, next) => {
     );
   }
 
-  // Validate URL format for each image URL
   if (!imageUrls.every((url) => validator.isURL(url))) {
     console.log("Validation failed: One or more image URLs are invalid");
     return next(errorHandler(400, "Please provide valid URLs for all images"));
   }
 
-  // Create new item object with imageUrls and userRef from authenticated user
   const newItem = new Item({
     item,
+    itemType, // Ensure this is included and correctly passed
     dateFound,
     location,
     description,
     imageUrls,
     category,
-    userRef: req.user.id, // Assuming req.user is set by authentication middleware
+    userRef: req.user.id,
   });
 
   try {
-    // Save the new item to the database
     const savedItem = await newItem.save();
     res.status(201).json(savedItem);
   } catch (error) {
@@ -82,5 +86,75 @@ export const getItems = async (req, res, next) => {
   } catch (error) {
     console.error("Error fetching items:", error);
     next(error);
+  }
+};
+
+export const getItemDetails = async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id);
+    if (!item) return res.status(404).json({ message: "Item not found" });
+    res.json(item);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const claimItem = async (req, res) => {
+  const { id } = req.params;
+  const { claimantName } = req.body;
+
+  if (!claimantName) {
+    return res.status(400).json({ message: "Claimant name is required" });
+  }
+
+  try {
+    const item = await Item.findById(id);
+    if (!item) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    if (item.status === "Claimed") {
+      return res
+        .status(400)
+        .json({ message: "This item has already been claimed." });
+    }
+
+    item.status = "Claimed";
+    item.claimantName = claimantName;
+    item.visibility = false; // Hide the item from public view
+    await item.save();
+
+    console.log("Updated Item:", item); // Debug log
+
+    res.status(200).json({ message: "Item claimed successfully", item });
+  } catch (error) {
+    console.error("Error updating item claim:", error);
+    res.status(500).json({ message: "Error processing claim" });
+  }
+};
+
+export const searchItems = async (req, res) => {
+  const { searchTerm = "", sort = "desc", category = "all" } = req.query;
+
+  let queryOptions = { visibility: true };
+  if (searchTerm) {
+    queryOptions.$text = { $search: searchTerm };
+  }
+  if (category !== "all") {
+    queryOptions.category = category;
+  }
+
+  try {
+    const items = await Item.find(queryOptions)
+      .sort({ createdAt: sort === "desc" ? -1 : 1 })
+      .exec();
+    res.json({ success: true, items });
+  } catch (error) {
+    console.error("Error searching items:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to search items",
+      error: error.message,
+    });
   }
 };

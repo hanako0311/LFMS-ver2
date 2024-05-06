@@ -1,7 +1,7 @@
-# FindNest: Advanced Lost and Found Management System
+# LFMS: Advanced Lost and Found Management System
 
 ## Overview
-FindNest is an innovative digital solution designed to streamline and enhance the lost and found process at CIT-University. This system automates manual procedures, making it easier for students, faculty, and staff to report and claim lost items efficiently. With a focus on user-friendliness and security, FindNest offers a comprehensive platform that integrates the reporting, tracking, and management of lost and found items.
+LFMS is an innovative digital solution designed to streamline and enhance the lost and found process at CIT-University. This system automates manual procedures, making it easier for students, faculty, and staff to report and claim lost items efficiently. With a focus on user-friendliness and security, FindNest offers a comprehensive platform that integrates the reporting, tracking, and management of lost and found items.
 
 ## Features
 - **Report Found Items**: Users can report found items through an intuitive form, detailing item name, description, location found, and date found.
@@ -31,12 +31,21 @@ FindNest is an innovative digital solution designed to streamline and enhance th
 - Node.js
 - MongoDB
 
+### Please Ask for the .env file
+
 ### Installation
-git clone https://github.com/yourrepository/findnest.git
-cd findnest
+git clone https://github.com/yourrepository/lfms.git
+
+### Initializing Frontend
+cd client
 npm install
 
-### Running the Application
+### Initializing Frontend
+should be in root
+npm install
+
+### After initialization, run the Application
+
 # Start the backend server
 should be in root folder
 npm run dev
